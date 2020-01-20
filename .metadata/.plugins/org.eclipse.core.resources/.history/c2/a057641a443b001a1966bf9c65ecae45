@@ -1,0 +1,16 @@
+package com.rakuten.training.web;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+@RunWith (SpringRunnner.class)
+
+
+public class ProductControllerUnitTest {
+
+  @Test
+  public void test() {
+    fail("Not yet implemented");
+  }
+}

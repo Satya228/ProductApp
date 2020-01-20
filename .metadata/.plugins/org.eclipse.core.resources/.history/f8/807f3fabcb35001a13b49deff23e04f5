@@ -1,0 +1,21 @@
+package com.stream.part1;
+import java.util.*;
+import java.util.stream.*;
+
+
+
+public class streamPart1 {
+	public static void main(String [] args)
+	{
+		List<String> strings = Arrays.asList("hi","hello","how", "are", "you");
+		Stream <String> stringsStream  = strings.stream();
+		System.out.println("Words (with spaces):");
+	    strings.stream().forEach(s -> System.out.println("  " + s));
+	    
+
+		
+		
+	}
+	
+	
+}

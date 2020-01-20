@@ -1,0 +1,24 @@
+package com.rakuten.training.service;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class ProductServiceImplTest {
+
+  @Test
+  public void addNewProduct_Returns_Valid_Id_When_ProductValue_GTEQ_MinValue test() {
+	  
+    //Arrange
+	  
+	  ProductServiceImpl service = new ProductServiceImpl();
+	  Product toBeAdded = new Product("test",10000, 1); //notice 10000x1 >=10000
+	  
+	  //Act
+	  int id =service.addNewProduct(toBeAdded);
+	  
+	  //Assert
+	  assertTrue(id > 0);
+	  
+  }
+}

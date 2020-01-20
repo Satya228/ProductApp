@@ -1,0 +1,54 @@
+package com.rakuten.training.service;
+
+	import java.util.List;
+
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.stereotype.Service;
+	import org.springframework.transaction.annotation.Transactional;
+
+	import com.rakuten.training.dal.PublisherDAO;
+	import com.rakuten.training.domain.Publisher;
+
+	@Service
+	@Transactional
+	public class PublisherServiceImpl implements PublisherService{
+		
+		PublisherDAO dao; // = new ProductDAOInMemImpl();
+
+		  @Autowired
+		  public void setDao(PublisherDAO dao) {
+		    this.dao = dao;
+		  }
+
+		  @Override
+		  public int addNewPublisher(Publisher toBeAdded) {
+		      Publisher added = dao.save(toBeAdded);
+		      return added.getId();
+		  }
+
+		  @Override
+		  public void removePublisher(int id) {
+		    Publisher existing = dao.findById(id);
+		    if (existing != null)
+		    	dao.deleteById(id);
+		  }
+
+		  @Override
+		  public List<Publisher> findAll() {
+		    return dao.findAll();
+		  }
+
+		  @Override
+		  public Publisher findById(int id) {
+		    return dao.findById(id);
+		  }
+		
+	}
+
+	
+	
+	
+	
+	
+	
+}

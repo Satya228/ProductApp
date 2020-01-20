@@ -1,0 +1,49 @@
+package com.rakuten.training.dal;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.rakuten.training.domain.Book;
+
+import com.rakuten.training.domain.Publisher;
+
+
+
+@Repository
+@Transactional
+public class PublisherDAOJpaImpl implements PublisherDAO {
+	
+	 @Autowired
+	 EntityManager em;
+
+	  public Publisher findById(int bookid) {
+	    return em.find(Publisher.class, bookid);
+	  }
+	  
+	  public Publisher save(Publisher toBeSaved,int bookid) {
+			Book p = em.find(Book.class, bookid);
+			 toBeSaved.setBook(p);
+		    em.persist(toBeSaved);
+		    return toBeSaved;
+		  }
+	  
+	  
+	  public void deleteById(int id) {
+		    Publisher r = em.find(Publisher.class, id);
+		    em.remove(r);
+		  }
+
+		  public List<Publisher> findAll() {
+		    return null;
+		  }
+	
+}
+
+
+
+

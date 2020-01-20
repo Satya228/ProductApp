@@ -1,0 +1,13 @@
+package com.rakuten.training.web;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ProductControllerUnitTest {
+
+  @Test
+  void test() {
+    fail("Not yet implemented");
+  }
+}

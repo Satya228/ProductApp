@@ -1,0 +1,52 @@
+package com.rakuten.training.Bookproject;
+
+
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.rakuten.training.dal.BookDAO;
+import com.rakuten.training.dal.PublisherDAO;
+import com.rakuten.training.domain.Book;
+import com.rakuten.training.ui.BookConsoleUI;
+import com.rakuten.training.ui.PublisherConsoleUI;
+
+@SpringBootApplication
+public class BookAppApplication {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext springContainer = SpringApplication.run(BookAppApplication.class, args);
+		Scanner sc=new Scanner(System.in);
+		int c;
+		System.out.println("Enter 1 to enter new publisher and 2 for Book"); 
+		c=sc.nextInt();
+		switch(c)
+		{
+		case 1:
+			PublisherConsoleUI ui=springContainer.getBean(PublisherConsoleUI.class);
+			ui.createPublisherWithUI();
+			break;
+		case 2:
+			BookDAO bookDAO = springContainer.getBean(BookDAO.class);
+			System.out.println("Enter Publisher id of the book : ");
+			int id=sc.nextInt();
+			BookConsoleUI u =springContainer.getBean(BookConsoleUI.class);
+			Book sample=u.EnterBookWithUI();
+			Book saved = bookDAO.save(sample,id);
+	        System.out.println("Created Book with id: " + saved.getBook_id());
+//			BookDAO bookDAO = springContainer.getBean(BookDAO.class);
+//		    Book sample = new Book("Chemistry","Science",800,900);
+//		    Book saved = bookDAO.save(sample,id);
+//		    System.out.println("Created Book with id: " + saved.getBook_id());
+		}
+		//BookConsoleUI ui =springContainer.getBean(BookConsoleUI.class);
+		//ui.EnterBookWithUI();
+		//ui.deleteBookWithId();
+			
+	}
+
+}
+

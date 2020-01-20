@@ -1,0 +1,40 @@
+package com.satya;
+import java.util.Arrays;
+
+
+public class LamdaExercise1 {
+	
+
+public static void sortByLength(String[] strings)
+{
+	Arrays.sort(strings, (s1, s2) -> s1.length() - s2.length());
+	System.out.print(Arrays.asList(strings));
+}
+
+public static void revSortByLength(String[] strings)
+{
+	Arrays.sort(strings,(s1,s2) -> s2.length() - s1.length());
+	System.out.println(Arrays.asList(strings));
+	
+	
+}
+public static void sortByAlphaFirstChar(String[] arr)
+{
+	Arrays.sort(arr,(s1,s2) -> s1.charAt(0) - s2.charAt(0));
+	System.out.println(Arrays.asList(arr));
+	
+	
+}
+
+public static void main(String []args)
+{
+	String[]strings = {"satya","swarnendu","very","long","array"};
+	sortByLength(strings);
+	revSortByLength(strings);
+	sortByAlphaFirstChar(strings);
+	
+	
+	
+	
+}
+}

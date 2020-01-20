@@ -1,0 +1,65 @@
+package com.rakuten.training.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.rakuten.training.dal.BookDAO;
+import com.rakuten.training.domain.Book;
+
+
+@Service
+@Transactional
+
+public class BookServiceImpl implements BookService {
+
+	  BookDAO dao; // = new BookDAOInMemImpl();
+
+	  @Autowired
+	  public void setDao(BookDAO dao) {
+	    this.dao = dao;
+	  }
+
+	  @Override
+	  public int save(Book toBeAdded) {
+	    if (toBeAdded.getPages() <= 1000) {
+	      Book added = dao.save(toBeAdded);
+	      return added.getId();
+	    } else {
+	      throw new IllegalArgumentException("Monetory pages of book is greater than 1000");
+	    }
+	  }
+
+	  @Override
+	  public void removeBook(int id) {
+	    Book existing = dao.findById(id);
+	    if (existing != null) {
+	    	 if (existing.getGenre().equals("philosophy")){
+	        throw new IllegalStateException("Cannot delete ");
+	      } else {
+	        dao.deleteById(id);
+	      }
+	    }
+	  }
+
+	  @Override
+	  public List<Book> findAll() {
+	    return dao.findAll();
+	  }
+
+	  @Override
+	  public Book findById(int id) {
+	    return dao.findById(id);
+	  }
+	}
+
+
+	
+	
+	
+	
+	
+

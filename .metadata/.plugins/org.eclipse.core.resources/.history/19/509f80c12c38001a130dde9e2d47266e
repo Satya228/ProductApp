@@ -1,0 +1,3 @@
+package com.rakuten.training.domain;
+
+public class Book {}

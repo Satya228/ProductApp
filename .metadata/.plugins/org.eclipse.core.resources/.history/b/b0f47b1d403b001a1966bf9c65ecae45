@@ -1,0 +1,5 @@
+package com.rakuten.training.service;
+
+import RuntimeException;
+//@Su
+public class NoSuchProductException extends RuntimeException {}

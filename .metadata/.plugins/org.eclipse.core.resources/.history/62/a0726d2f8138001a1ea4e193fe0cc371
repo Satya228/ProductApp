@@ -1,0 +1,17 @@
+package com.rakuten.training.Bookproject;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.context.ApplicationContext;
+
+import com.rakuten.training.ui.BookConsoleUI;
+
+@SpringBootApplication
+public class BookProjectApplication {
+	public static void main(String[] args) {
+		ApplicationContext springContainter = SpringApplication.run(BookProjectApplication.class, args);
+		BookConsoleUI ui = springContainter.getBean(BookConsoleUI.class);
+		ui.createBookWithUI();
+	}
+}

@@ -1,0 +1,23 @@
+package com.rakuten.training.Bookproject;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.context.ApplicationContext;
+
+import com.rakuten.training.dal.BookDAO;
+import com.rakuten.training.domain.Book;
+import com.rakuten.training.ui.BookConsoleUI;
+
+@SpringBootApplication
+public class BookProjectApplication {
+	public static void main(String[] args) {
+		ApplicationContext springContainter = SpringApplication.run(BookProjectApplication.class, args);
+		BookConsoleUI ui = springContainter.getBean(BookConsoleUI.class);
+		ui.createBookWithUI();
+		//BookDAO BookDAO = springContainer.getBean(BookDAO.class);
+	    //Book sample = new Book("self", "this is good", 5);
+	   // Book saved = bookDAO.save(sample,1);
+	   // System.out.println("Created review with id: " + saved.getId());//
+	}
+}

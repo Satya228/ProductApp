@@ -1,0 +1,28 @@
+package com.satya;
+import java.util.Arrays;
+
+
+public class LamdaExercise1 {
+	
+
+public static void sortByLength(String[] strings)
+{
+	Arrays.sort(strings, (s1, s2) -> s1.length() - s2.length());
+}
+
+public static void revSortByLength(String[] strings)
+{
+	Arrays.sort(strings,(s1,s2) -> s2.length() - s1.length());
+	
+}
+
+public static void main(String []args)
+{
+	String[]strings = {"satya","swarnendu","very","long","array"};
+	sortByLength(strings);
+	revSortByLength(strings);
+	
+	
+	
+}
+}

@@ -1,0 +1,134 @@
+package com.rakuten.training.service;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import com.rakuten.training.dal.ProductDAO;
+import com.rakuten.training.domain.Product;
+
+public class ProductServiceImplTest {
+
+  private static final String NULL = null;
+
+@Test
+  public void addNewProduct_Returns_Valid_Id_When_ProductValue_GTEQ_MinValue_test() {
+	  
+    //Arrange
+	  
+	  ProductServiceImpl service = new ProductServiceImpl();
+	  Product toBeAdded = new Product("test",10000, 1); //notice 10000x1 >=10000
+	  ProductDAO mockDAO = Mockito.mock(ProductDAO.class);
+	  Product saved = new Product("test",10000,1);
+	  saved.setId(1);
+	  Mockito.when(mockDAO.save(toBeAdded)).thenReturn(saved);
+	  service.setDao(mockDAO);
+	  
+	  
+	  
+	  
+	  //Act
+	  int id =service.addNewProduct(toBeAdded);
+	  
+	  //Assert
+	  assertTrue(id > 0);
+	  
+  }
+  @Test(expected = IllegalArgumentException.class)
+  public void addNewProduct_Throws_Valid_Id_When_ProductValue_LT_MinValue_test() {
+	  //Arrange
+	  ProductServiceImpl service  = new ProductServiceImpl();
+	  Product toBeAdded = new Product("test",9999, 1); // notice 9999 *1>=10000
+	  //Act
+	  service.addNewProduct(toBeAdded);
+	  //Assert
+	  
+  }
+  
+  @Test
+  
+  public void RemoveProduct_Deletes_Valid_Id_When_ProductValue_lt_MinValue_test()
+  //Arrange
+  {
+	  ProductServiceImpl service = new ProductServiceImpl();
+	  Product dek = new Product("test",1000001, 2);
+	  ProductDAO mockDAO = Mockito.mock(ProductDAO.class);
+	  Product delete = new Product("test",1000001,2);
+	  delete.setId(2);
+	  Mockito.when(mockDAO.findById(2)).thenReturn(delete);
+	  service.setDao(mockDAO);
+	  
+	  //Act
+	  service.removeProduct(2);
+	  //Arrange
+	  Mockito.verify(mockDAO).deleteById(2);
+	  
+	 
+	  
+	  
+  }
+  
+  
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+  }
+
+  
+  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  //Assert
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+  }
+  
+}

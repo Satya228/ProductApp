@@ -1,0 +1,33 @@
+package com.stream.part1;
+import java.util.*;
+import java.util.stream.*;
+
+//Problem1
+
+public class streamPart1 {
+	public static void main(String [] args)
+	{
+		List<String> strings = Arrays.asList("hi","hello","how", "are", "you");
+		Stream <String> stringsStream  = strings.stream();
+		System.out.println("String with spaces");
+	    strings.stream().forEach(s -> System.out.println("  " + s));
+	    
+	 //Problem 2   
+	    System.out.println("String with no spaces");
+	    strings.stream().forEach(System.out::println);
+	    
+	  //Problem 3
+	    System.out.println("Transformed List");
+	    strings.stream().map(e-> e+ "!").forEach(System.out::println);
+	    
+	    
+
+	    
+	    
+
+		
+		
+	}
+	
+	
+}

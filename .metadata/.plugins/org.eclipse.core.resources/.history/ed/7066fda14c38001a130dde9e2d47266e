@@ -1,0 +1,29 @@
+package com.rakuten.training.dal;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import com.rakuten.training.domain.Review;
+
+@Repository
+@Transactional
+
+
+public class ReviewDAOJpaImpl {
+	
+	EntityManager em;
+	public Review  findById1(int id)
+	
+	{
+		return em.find (Review.class, id);
+		
+	}
+	
+		
+				
+		
+	
+	
+}

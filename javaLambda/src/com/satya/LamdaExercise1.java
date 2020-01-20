@@ -1,0 +1,74 @@
+package com.satya;
+import java.util.Arrays;
+
+
+public class LamdaExercise1 {
+	
+
+public static void sortByLength(String[] strings)
+{
+	Arrays.sort(strings, (s1, s2) -> s1.length() - s2.length());
+	System.out.print(Arrays.asList(strings));
+}
+
+public static void revSortByLength(String[] strings)
+{
+	Arrays.sort(strings,(s1,s2) -> s2.length() - s1.length());
+	System.out.println(Arrays.asList(strings));
+	
+	
+}
+public static void sortByAlphaFirstChar(String[] arr)
+{
+	Arrays.sort(arr,(s1,s2) -> s1.charAt(0) - s2.charAt(0));
+	System.out.println(Arrays.asList(arr));
+	
+	
+}
+
+public static double eChecker(String s1, String s2)
+{
+	if(s2.contains("e") && ! s1.contains("e")) return -1;
+	else if (s2.contains("e") && s1.contains("e")) return 1;
+	else return 0;
+	
+}
+
+public static void sortByPresenceOfE(String[] arr) {
+	 Arrays.sort(arr, (s1, s2) -> {
+	 if (s2.contains("e") && !s1.contains("e")) return 1;
+	 else if(!s2.contains("e") && s1.contains("e")) return -1;
+	 else return 0;
+	 });
+	 System.out.println(Arrays.asList(arr));
+	  }
+
+
+public static void sortByPresenceOfEUsingMethodReference(String[] strings)
+{
+	Arrays.sort(strings,LambdaExercise1::eChecker);
+	
+}
+
+
+public static void main(String []args)
+{
+	String[]strings = {"satya","swarnendu","very","long","array"};
+	sortByLength(strings);
+	revSortByLength(strings);
+	sortByAlphaFirstChar(strings);
+	eChecker(strings);
+  sortByPresenceOfE(strings);
+  
+  
+	
+	
+	
+	
+	
+	
+}
+
+private static void eChecker(String[] strings){// TODO Auto-generated method stub
+}
+}

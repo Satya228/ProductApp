@@ -1,0 +1,16 @@
+package com.stream.part1;
+import java.util.*;
+import java.util.stream.*;
+
+
+
+public class streamPart1 {
+	public static void main(String [] args)
+	{
+		List<String> words = Arrays.asList("hi","hello","how", "are", "you");
+		Stream <String> wordStream  = words.stream();
+		
+	}
+	
+	
+}
